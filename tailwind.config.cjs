@@ -47,9 +47,6 @@ module.exports = {
     },
   },
   plugins: [
-    // require("tailwindcss-theming")({
-    //   preset: "nord", // Change your preset here.
-    // }),
     require("@tailwindcss/typography"),
     require("@tailwindcss/forms"),
     require("@tailwindcss/line-clamp"),
