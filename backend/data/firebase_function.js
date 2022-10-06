@@ -12,6 +12,11 @@ export const getCountries = async () => {
     .map((value, index) => ({ ...value, id: keys[index] }))
     .sort((lastCountry, nextCountry) => lastCountry.index - nextCountry.index);
 };
+export const getCountry = async (id) => {
+  const snapshot = await get(child(databaseRef, id));
+  const data = snapshot.toJSON();
+  return { ...data, id };
+};
 export const addCountry = async (country) => {
   const ref = await push(databaseRef, country);
   const snapshot = await get(ref);

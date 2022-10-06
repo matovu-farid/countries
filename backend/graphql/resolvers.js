@@ -3,6 +3,7 @@ import {
   addCountry as add,
   updateCountry as update,
   deleteCountry as removeCountry,
+  getCountry,
 } from "../data/firebase_function.js";
 const resolvers = {
   Query: {
@@ -10,6 +11,10 @@ const resolvers = {
       const countries = await getCountries();
       const count = countries.length;
       return { data: countries, count };
+    },
+    country: async (parent, { id }) => {
+      const country = await getCountry(id);
+      return country;
     },
   },
   Mutation: {

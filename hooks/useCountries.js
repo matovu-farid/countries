@@ -1,4 +1,6 @@
 import { GET_COUNTRIES } from "../queries/queries";
+import { useQuery } from "@apollo/react-hooks";
+
 const useCountries = () => {
   const { loading, error, data } = useQuery(GET_COUNTRIES);
   const countries = data?.countries?.data || [];

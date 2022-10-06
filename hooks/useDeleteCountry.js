@@ -1,9 +1,10 @@
 import { DELETE_COUNTRY } from "../queries/mutations";
-const useUpdateCountry = (id) => {
+import { useMutation } from "@apollo/react-hooks";
+const useDeleteCountry = (id) => {
   const [mutate, { data, loading, error }] = useMutation(DELETE_COUNTRY);
-  const deleteCountry = async (id) => {
+  const deleteCountry = async () => {
     return await mutate({ variables: { id } });
   };
   return { deleteCountry, data, loading, error };
 };
-export default useUpdateCountry;
+export default useDeleteCountry;
