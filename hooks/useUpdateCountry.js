@@ -1,9 +1,9 @@
 import { UPDATE_COUNTRY } from "../queries/mutations";
-const useCountries = (country) => {
-  const { loading, error, data } = useQuery(UPDATE_COUNTRY, {
-    variables: { country },
-  });
-  const countries = data?.country || {};
-  return { loading, error, countries };
+const useUpdateCountry = (country) => {
+  const [mutate, { data, loading, error }] = useMutation(UPDATE_COUNTRY);
+  const addCountry = async (country) => {
+    return await mutate({ variables: { country } });
+  };
+  return { addCountry, data, loading, error };
 };
-export default useCountries;
+export default useUpdateCountry;
