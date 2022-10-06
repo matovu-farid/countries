@@ -5,7 +5,6 @@ const databaseRef = ref(database);
 export const getCountries = async () => {
   const snapshot = await get(child(databaseRef, "/"));
   const data = snapshot.toJSON();
-
   if (!data) return [];
   const keys = Object.keys(data);
   const values = Object.values(data);
@@ -19,13 +18,18 @@ export const addCountry = async (country) => {
   return Object.assign(snapshot.val(), { id: snapshot.key });
 };
 
-export const deleteCountry = (id) => {
+export const deleteCountry = async (id) => {
   const countryRef = ref(database, `/${id}`);
-  return remove(countryRef);
+  const snapshot = await get(countryRef);
+  if (!snapshot.val()) return {};
+  const country = Object.assign(snapshot.val(), { id: snapshot.key });
+  await remove(countryRef);
+  return country;
 };
 export const updateCountry = async (country) => {
   const countryRef = ref(database, `/${country.id}`);
   await update(countryRef, country);
   const snapshot = await get(countryRef);
+  if (!snapshot.val()) return {};
   return Object.assign(country, snapshot.val());
 };

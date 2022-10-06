@@ -31,9 +31,10 @@ nextApp.prepare().then(() => {
 
     return handle(req, res); // for all the react stuff
   });
-
-  apolloServer.applyMiddleware({
-    app: app,
+  apolloServer.start().then(() => {
+    apolloServer.applyMiddleware({
+      app: app,
+    });
   });
 
   // Other things ========================================

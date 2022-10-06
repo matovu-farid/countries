@@ -2,6 +2,7 @@ import {
   getCountries,
   addCountry as add,
   updateCountry as update,
+  deleteCountry as removeCountry,
 } from "../data/firebase_function.js";
 const resolvers = {
   Query: {
@@ -17,6 +18,9 @@ const resolvers = {
     },
     updateCountry: async (_, { country }) => {
       return await update(country);
+    },
+    deleteCountry: async (_, { id }) => {
+      return await removeCountry(id);
     },
   },
 };

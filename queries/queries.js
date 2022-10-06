@@ -1,4 +1,4 @@
-const GET_COUNTRIES = gql`
+export const GET_COUNTRIES = gql`
   query getCountries {
     countries {
       data {
