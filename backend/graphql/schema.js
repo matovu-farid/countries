@@ -1,18 +1,25 @@
 import { gql } from "apollo-server-express";
 const typeDefs = gql`
   type Query {
-    countries: [Country]
+    countries: CountryList
+  }
+  type Mutation {
     addCountry(country: CountryInput): Country
+  }
+  type CountryList {
+    data: [Country]!
+    count: Int!
   }
   type Country {
     id: ID
-    area: String
+    index: Int
+    area: Int
     country: String
     totalPopulation: Int
     year: String
   }
   input CountryInput {
-    area: String
+    area: Int
     country: String
     totalPopulation: Int
     year: String

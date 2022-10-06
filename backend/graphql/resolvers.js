@@ -3,9 +3,11 @@ const resolvers = {
   Query: {
     countries: async () => {
       const countries = await getCountries();
-      console.log(countries);
-      return countries;
+      const count = countries.length;
+      return { data: countries, count };
     },
+  },
+  Mutation: {
     addCountry: async (_, { country }) => {
       return await addCountry(country);
     },
