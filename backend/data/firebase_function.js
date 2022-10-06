@@ -16,15 +16,16 @@ export const getCountries = async () => {
 export const addCountry = async (country) => {
   const ref = await push(databaseRef, country);
   const snapshot = await get(ref);
-
-  return Object.assign(snapshot.val(), { id: key });
+  return Object.assign(snapshot.val(), { id: snapshot.key });
 };
 
 export const deleteCountry = (id) => {
   const countryRef = ref(database, `/${id}`);
   return remove(countryRef);
 };
-export const updateCountry = (country) => {
+export const updateCountry = async (country) => {
   const countryRef = ref(database, `/${country.id}`);
-  return update(countryRef, country);
+  await update(countryRef, country);
+  const snapshot = await get(countryRef);
+  return Object.assign(country, snapshot.val());
 };

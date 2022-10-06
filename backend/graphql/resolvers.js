@@ -1,4 +1,8 @@
-import { getCountries, addCountry } from "../data/firebase_function.js";
+import {
+  getCountries,
+  addCountry as add,
+  updateCountry as update,
+} from "../data/firebase_function.js";
 const resolvers = {
   Query: {
     countries: async () => {
@@ -9,7 +13,10 @@ const resolvers = {
   },
   Mutation: {
     addCountry: async (_, { country }) => {
-      return await addCountry(country);
+      return await add(country);
+    },
+    updateCountry: async (_, { country }) => {
+      return await update(country);
     },
   },
 };

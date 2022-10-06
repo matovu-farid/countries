@@ -5,6 +5,7 @@ const typeDefs = gql`
   }
   type Mutation {
     addCountry(country: CountryInput): Country
+    updateCountry(country: CountryUpdate): Country
   }
   type CountryList {
     data: [Country]!
@@ -19,6 +20,13 @@ const typeDefs = gql`
     year: String
   }
   input CountryInput {
+    area: Int!
+    country: String!
+    totalPopulation: Int!
+    year: String!
+  }
+  input CountryUpdate {
+    id: ID!
     area: Int
     country: String
     totalPopulation: Int
