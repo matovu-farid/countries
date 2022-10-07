@@ -1,4 +1,5 @@
-import { gql } from "apollo-server-express";
+import { gql } from "@apollo/client";
+
 export const ADD_COUNTRY = gql`
   mutation AddCountry($country: CountryInput) {
     addCountry(country: $country) {

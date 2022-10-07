@@ -18,12 +18,9 @@ const CountryItem = ({ country }) => {
         </h4>
         <h5>{country.totalPopulation} people</h5>
         <h5 className="text-gray-700 text-base mb-4">{country.year}</h5>
-        <div className="flex justify-between">
-          <DangerButton
-            label="Delete Country"
-            clickHandler={() => deleteCountry()}
-          />
-          <PrimaryButton label="Edit Country" href={`/edit/${country.id}`} />
+        <div className="flex justify-between gap-2">
+          <DangerButton label="Delete" clickHandler={() => deleteCountry()} />
+          <PrimaryButton label="Edit" href={`/edit/${country.id}`} />
         </div>
       </div>
     </div>

@@ -1,11 +1,15 @@
-import Head from "next/head";
-import Image from "next/image";
-import styles from "../styles/Home.module.css";
-
+import CountryList from "../components/CountryList";
+import SecondaryButton from "../components/Buttons/SecondaryButton";
 export default function Home() {
   return (
-    <div className=" bg-green-500 text">
-      <p className="text-red-500">Yolo</p>
-    </div>
+    <main>
+      <header className="flex gap-2">
+        <h1 className="sm:text-lg md:text-2xl text-5xl text-center font-sans">
+          Country List
+        </h1>
+        <SecondaryButton href="/create">Add</SecondaryButton>
+      </header>
+      <CountryList />
+    </main>
   );
 }
