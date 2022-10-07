@@ -4,6 +4,7 @@ import useAddCountry from "../hooks/useAddCountry";
 
 const Create = () => {
   const { addCountry } = useAddCountry();
+
   return (
     <div>
       <h1 className="text-center text-2xl">Create</h1>

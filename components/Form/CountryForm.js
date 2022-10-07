@@ -3,6 +3,8 @@ import useCountries from "../../hooks/useCountries";
 import PrimaryButton from "../Buttons/PrimaryButton";
 import FormItem from "./FormText";
 import { useState } from "react";
+import { toast } from "react-toastify";
+import { useRouter } from "next/router";
 
 const CountryForm = ({ innitialData, submitFunction }) => {
   const { count: index } = useCountries();
@@ -11,9 +13,14 @@ const CountryForm = ({ innitialData, submitFunction }) => {
   const [totalPopulation, setTotalPopulation] = useState(
     innitialData?.population || 0
   );
-  const [year, setYear] = useState(innitialData?.year || "");
+  const [year, setYear] = useState(innitialData?.year || 2022);
+  const router = useRouter();
 
   const handleSubmit = () => {
+    if (!country || !area || !totalPopulation || !year) {
+      toast.info("Please fill all the fields");
+      return;
+    }
     const newCountry = {
       area,
       country,
@@ -22,12 +29,13 @@ const CountryForm = ({ innitialData, submitFunction }) => {
       index,
       id: innitialData?.id,
     };
-    submitFunction(newCountry);
+    const country = submitFunction(newCountry);
+    router.push(`/`);
   };
 
   return (
-    <form class="flex justify-center">
-      <div class="block p-6 rounded-lg shadow-lg bg-white max-w-sm">
+    <form className="flex justify-center">
+      <div className="block p-6 rounded-lg shadow-lg bg-white max-w-sm">
         <FormItem
           id="country"
           label="Country"
@@ -41,7 +49,7 @@ const CountryForm = ({ innitialData, submitFunction }) => {
           value={area}
           label="Area (square kilometres)"
           placeholder="Area..."
-          onChangeHandler={(value) => setArea(value)}
+          onChangeHandler={(value) => setArea(parseInt(value))}
         ></FormItem>
         <FormItem
           id="totalPopulation"
@@ -50,15 +58,17 @@ const CountryForm = ({ innitialData, submitFunction }) => {
           step={10000}
           label="Total population"
           placeholder="Total population..."
-          onChangeHandler={(value) => setTotalPopulation(value)}
+          onChangeHandler={(value) => setTotalPopulation(parseInt(value))}
         ></FormItem>
 
         <FormItem
           id="year"
           value={year}
+          type="number"
+          step={1}
           label="Year"
           placeholder="Year..."
-          onChangeHandler={(value) => setYear(value)}
+          onChangeHandler={(value) => setYear(parseInt(value))}
         ></FormItem>
         <PrimaryButton clickHandler={handleSubmit} label="Submit" />
       </div>

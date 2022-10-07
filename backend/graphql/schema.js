@@ -19,13 +19,13 @@ const typeDefs = gql`
     area: Int!
     country: String!
     totalPopulation: Int!
-    year: String!
+    year: Int!
   }
   input CountryInput {
     area: Int!
     country: String!
     totalPopulation: Int!
-    year: String!
+    year: Int!
     index: Int!
   }
   input CountryUpdate {
@@ -33,7 +33,7 @@ const typeDefs = gql`
     area: Int
     country: String
     totalPopulation: Int
-    year: String
+    year: Int
   }
 `;
 export default typeDefs;
