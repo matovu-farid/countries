@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import useCountries from "../../hooks/useCountries";
 import PrimaryButton from "../Buttons/PrimaryButton";
 import FormItem from "./FormText";
@@ -8,29 +8,51 @@ import { useRouter } from "next/router";
 
 const CountryForm = ({ innitialData, submitFunction }) => {
   const { count: index } = useCountries();
-  const [area, setArea] = useState(innitialData?.area || 0);
-  const [country, setCountry] = useState(innitialData?.country || "");
-  const [totalPopulation, setTotalPopulation] = useState(
-    innitialData?.population || 0
-  );
-  const [year, setYear] = useState(innitialData?.year || 2022);
+  const [area, setArea] = useState(0);
+  const [country, setCountry] = useState("");
+  const [totalPopulation, setTotalPopulation] = useState(0);
+  const [year, setYear] = useState(2022);
+  const { addCountry } = submitFunction();
   const router = useRouter();
+  const innitialDataExists = innitialData !== undefined;
+  useEffect(() => {
+    if (innitialDataExists) {
+      console.log("Innitial data exists");
+      console.log(innitialData);
+      const { area } = innitialData;
+      setArea(area);
+      setCountry(innitialData.country);
+      setTotalPopulation(innitialData.totalPopulation);
+      setYear(innitialData.year);
+    }
+  }, [innitialDataExists]);
 
   const handleSubmit = () => {
     if (!country || !area || !totalPopulation || !year) {
+      console.log("Missing data", { area, country, totalPopulation, year });
       toast.info("Please fill all the fields");
       return;
     }
-    const newCountry = {
+    let updateFields = {
       area,
       country,
       totalPopulation,
       year,
       index,
-      id: innitialData?.id,
     };
-    const country = submitFunction(newCountry);
-    router.push(`/`);
+    if (innitialDataExists) {
+      updateFields = {
+        area,
+        country,
+        totalPopulation,
+        year,
+
+        id: innitialData.id,
+      };
+    }
+    addCountry(updateFields).then(() => {
+      router.push(`/`);
+    });
   };
 
   return (
@@ -41,7 +63,10 @@ const CountryForm = ({ innitialData, submitFunction }) => {
           label="Country"
           value={country}
           placeholder="Country..."
-          onChangeHandler={(value) => setCountry(value)}
+          onChangeHandler={(value) => {
+            console.log(value);
+            setCountry(value);
+          }}
         ></FormItem>
         <FormItem
           id="area"

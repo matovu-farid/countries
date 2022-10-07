@@ -1,7 +1,7 @@
 import { UPDATE_COUNTRY } from "../queries/mutations";
 import { useMutation } from "@apollo/react-hooks";
 import { toast } from "react-toastify";
-const useUpdateCountry = (country) => {
+const useUpdateCountry = () => {
   const [mutate, { data, loading, error }] = useMutation(UPDATE_COUNTRY);
   const addCountry = async (country) => {
     return await toast.promise(mutate({ variables: { country } }), {

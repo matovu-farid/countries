@@ -1,5 +1,6 @@
 import useCountries from "../hooks/useCountries";
-import CountryItem from "./Country";
+import CountryInfo from "./CountryDetails";
+import CountrySummary from "./CountrySummary";
 
 const CountryList = () => {
   const { countries, loading } = useCountries();
@@ -8,7 +9,7 @@ const CountryList = () => {
     <div className="flex justify-center">
       <ul className=" grid grid-cols-1 md:grid-cols-2  lg:grid-cols-3 gap-2 bg-white rounded-lg border border-gray-200  text-gray-900">
         {countries.map((country) => (
-          <CountryItem key={country.id} country={country}></CountryItem>
+          <CountrySummary key={country.id} country={country}></CountrySummary>
         ))}
       </ul>
     </div>

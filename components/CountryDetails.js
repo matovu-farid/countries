@@ -2,10 +2,11 @@ import useDeleteCountry from "../hooks/useDeleteCountry";
 import DangerButton from "./Buttons/DangerButton";
 import PrimaryButton from "./Buttons/PrimaryButton";
 
-const CountryItem = ({ country }) => {
-  const { deleteCountry } = useDeleteCountry(country.id);
+const CountryDetails = ({ country }) => {
+  const { deleteCountry } = useDeleteCountry();
   const handleDelete = () => {
-    deleteCountry();
+    console.log(country);
+    deleteCountry(country.id);
   };
   return (
     <div className="flex justify-center">
@@ -19,11 +20,11 @@ const CountryItem = ({ country }) => {
         <h5>{country.totalPopulation} people</h5>
         <h5 className="text-gray-700 text-base mb-4">{country.year}</h5>
         <div className="flex justify-between gap-2">
-          <DangerButton label="Delete" clickHandler={() => deleteCountry()} />
+          <DangerButton label="Delete" clickHandler={() => handleDelete()} />
           <PrimaryButton label="Edit" href={`/edit/${country.id}`} />
         </div>
       </div>
     </div>
   );
 };
-export default CountryItem;
+export default CountryDetails;

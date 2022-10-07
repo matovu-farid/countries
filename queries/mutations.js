@@ -12,12 +12,12 @@ export const ADD_COUNTRY = gql`
   }
 `;
 export const UPDATE_COUNTRY = gql`
-  mutation AddCountry($country: CountryInput) {
+  mutation UpdateCountry($country: CountryUpdate) {
     updateCountry(country: $country) {
-      country
       id
       index
       area
+      country
       totalPopulation
       year
     }
