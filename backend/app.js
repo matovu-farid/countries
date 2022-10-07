@@ -1,4 +1,3 @@
-//TODO: delete file
 import { ApolloServer } from "apollo-server-express";
 import {
   ApolloServerPluginDrainHttpServer,
@@ -45,7 +44,8 @@ async function startApolloServer({ typeDefs, resolvers }) {
 
   await new Promise((resolve) => httpServer.listen({ port }, resolve));
   console.log(
-    `🚀 Server ready at http://localhost:${port}${server.graphqlPath}`
+    `🚀 Server is ready at http://localhost:${port}${server.graphqlPath}`
   );
+  console.log(`🚀 App is ready at http://localhost:${port}`);
 }
 startApolloServer({ typeDefs, resolvers });

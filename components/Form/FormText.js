@@ -1,6 +1,14 @@
 import React from "react";
 
-const FormText = ({ placeholder, id, label, onChangeHandler }) => {
+const FormText = ({
+  placeholder,
+  id,
+  label,
+  onChangeHandler,
+  value,
+  type,
+  step,
+}) => {
   return (
     <div class="flex justify-center">
       <div class="mb-3 xl:w-96">
@@ -8,7 +16,11 @@ const FormText = ({ placeholder, id, label, onChangeHandler }) => {
           {label}
         </label>
         <input
-          type="text"
+          step={step || 100}
+          required
+          aria-required
+          value={value}
+          type={type || "text"}
           class="
         form-control block w-full  px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding
         border border-solid border-gray-300  rounded transition ease-in-out  m-0

@@ -2,6 +2,7 @@ import React from "react";
 import useCountries from "../../hooks/useCountries";
 import PrimaryButton from "../Buttons/PrimaryButton";
 import FormItem from "./FormText";
+import { useState } from "react";
 
 const CountryForm = ({ innitialData, submitFunction }) => {
   const { count: index } = useCountries();
@@ -29,32 +30,37 @@ const CountryForm = ({ innitialData, submitFunction }) => {
       <div class="block p-6 rounded-lg shadow-lg bg-white max-w-sm">
         <FormItem
           id="country"
-          label={country}
+          label="Country"
+          value={country}
           placeholder="Country..."
           onChangeHandler={(value) => setCountry(value)}
         ></FormItem>
         <FormItem
           id="area"
           type="number"
-          label={area}
+          value={area}
+          label="Area (square kilometres)"
           placeholder="Area..."
           onChangeHandler={(value) => setArea(value)}
         ></FormItem>
         <FormItem
           id="totalPopulation"
           type="number"
-          label={totalPopulation}
-          placeholder="Total Population..."
+          value={totalPopulation}
+          step={10000}
+          label="Total population"
+          placeholder="Total population..."
           onChangeHandler={(value) => setTotalPopulation(value)}
         ></FormItem>
 
         <FormItem
           id="year"
-          label={year}
+          value={year}
+          label="Year"
           placeholder="Year..."
           onChangeHandler={(value) => setYear(value)}
         ></FormItem>
-        <PrimaryButton clickHandler={handleSubmit} label={Submit} />
+        <PrimaryButton clickHandler={handleSubmit} label="Submit" />
       </div>
     </form>
   );

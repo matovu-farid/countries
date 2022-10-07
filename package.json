@@ -4,8 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "nodemon ./pages/api/server.js",
-    "node-dev": "nodemon ./backend/app.js",
+    "dev": "nodemon ./backend/app.js",
     "build": "next build",
     "start": "NODE_ENV=production node ./backend/app.js && next start",
     "lint": "next lint"
