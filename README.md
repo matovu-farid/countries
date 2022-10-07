@@ -1,34 +1,48 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Countries
+
+## Description
+
+This project is performs CRUD operations on a list of countries. The project is a fullstack application with both frontend and backend. Graphql is used to query the data from the backend. The frontend is created with a Nextjs application.
+
+## Demos
+
+Below are the demos for the application. They are split into the frontend and the backend.
+
+### Backend Demo
+
+[![screenshot](https://cdn.loom.com/sessions/thumbnails/5bb3b253ec014416a34226e5de38a5d4-with-play.gif)](https://www.loom.com/share/5bb3b253ec014416a34226e5de38a5d4)
+
+### Frontend Demo
+
+[![screenshot](https://cdn.loom.com/sessions/thumbnails/725717d733da430eb2d095df61b8c033-with-play.gif)](https://www.loom.com/share/725717d733da430eb2d095df61b8c033)
+
+## Technology
+
+Server: Apollo Express Server
+Database: Google Firebase Realtime Database
+Language: Javascript
+Framework: React.Js
+Front End: Tailwind CSS
 
 ## Getting Started
 
-First, run the development server:
+To get the content of this project locally you need to run this command in your terminal:
 
 ```bash
-npm run dev
-# or
-yarn dev
+  git clone https://github.com/matovu-farid/countries.git
+  cd countries
+  yarn install # npm run install
+  yarn dev # npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Author
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+👤 **Matovu Farid Nkoba**
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+- GitHub: [@matovu-farid](https://github.com/matovu-farid)
+- Twitter: [@matovu100](https://twitter.com/matovu100)
+- LinkedIn: [matovu-farid](https://www.linkedin.com/in/matovu-farid)
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+## 📝 License
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+This project is [MIT](./MIT.md) licensed.
