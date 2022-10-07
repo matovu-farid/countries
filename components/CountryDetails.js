@@ -5,7 +5,6 @@ import PrimaryButton from "./Buttons/PrimaryButton";
 const CountryDetails = ({ country }) => {
   const { deleteCountry } = useDeleteCountry();
   const handleDelete = () => {
-    console.log(country);
     deleteCountry(country.id);
   };
   return (

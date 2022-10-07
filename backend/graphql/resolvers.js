@@ -10,22 +10,32 @@ const resolvers = {
     countries: async () => {
       const countries = await getCountries();
       const count = countries.length;
-      return { data: countries, count };
+      return {
+        data: countries,
+        count,
+        messege: "Countries fetched successfully",
+      };
     },
-    country: async (parent, { id }) => {
+    country: async (_, { id }) => {
       const country = await getCountry(id);
-      return country;
+      return { country, messege: "Country fetched successfully" };
     },
   },
   Mutation: {
     addCountry: async (_, { country }) => {
-      return await add(country);
+      const addedCountry = await add(country);
+      return { country: addedCountry, messege: "Country added successfully" };
     },
     updateCountry: async (_, { country }) => {
-      return await update(country);
+      const updatedCountry = update(country);
+      return {
+        country: updatedCountry,
+        messege: "Country updated successfully",
+      };
     },
     deleteCountry: async (_, { id }) => {
-      return await removeCountry(id);
+      const country = await removeCountry(id);
+      return { country, messege: "Country deleted successfully" };
     },
   },
 };

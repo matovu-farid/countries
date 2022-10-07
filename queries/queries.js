@@ -11,18 +11,22 @@ export const GET_COUNTRIES = gql`
         year
       }
       count
+      messege
     }
   }
 `;
 export const GET_COUNTRY = gql`
-  query Country($countryId: ID!) {
+  query getCountry($countryId: ID!) {
     country(id: $countryId) {
-      id
-      index
-      area
-      country
-      totalPopulation
-      year
+      country {
+        id
+        index
+        area
+        country
+        totalPopulation
+        year
+      }
+      messege
     }
   }
 `;

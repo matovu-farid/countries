@@ -6,7 +6,6 @@ import SecondaryButton from "./Buttons/SecondaryButton";
 const CountrySummary = ({ country }) => {
   const { deleteCountry } = useDeleteCountry();
   const handleDelete = () => {
-    console.log(country);
     deleteCountry(country.id);
   };
   return (

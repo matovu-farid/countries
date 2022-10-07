@@ -17,8 +17,6 @@ const CountryForm = ({ innitialData, submitFunction }) => {
   const innitialDataExists = innitialData !== undefined;
   useEffect(() => {
     if (innitialDataExists) {
-      console.log("Innitial data exists");
-      console.log(innitialData);
       const { area } = innitialData;
       setArea(area);
       setCountry(innitialData.country);
@@ -64,7 +62,6 @@ const CountryForm = ({ innitialData, submitFunction }) => {
           value={country}
           placeholder="Country..."
           onChangeHandler={(value) => {
-            console.log(value);
             setCountry(value);
           }}
         ></FormItem>
